@@ -40,3 +40,26 @@ $ flask run
 
 This project is licensed under the MIT License (see the
 [LICENSE](LICENSE) file for details).
+
+
+# Windows
+Download python 3.11 for windows
+https://www.python.org/downloads/release/python-3119/ 
+
+py -3.11 -m pip install -r requirements.txt
+
+py -3.11 -m flask initdb
+py -3.11 -m flask translate compile
+
+Start 
+py -3.11 -m flask run --port=5000
+
+In case some error with the port:
+
+netstat -ano | findstr :5000
+then kill it:
+
+taskkill /PID 1234 /F
+
+Start 
+py -3.11 -m flask run --port=5000
