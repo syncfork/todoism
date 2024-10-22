@@ -1,9 +1,7 @@
 services:
   - type: web
     name: todoism-app
-    runtime: python  
-    buildCommand: |
-      pip install -r requirements.txt
-      flask initdb
-      flask translate compile
-    startCommand: flask run --host=0.0.0.0 --port $PORT
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: |
+      flask initdb && flask translate compile && flask run --host=0.0.0.0 --port 5001
