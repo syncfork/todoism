@@ -1,0 +1,49 @@
+name: Run #Nombre del workflow
+
+on: 
+    push:
+        branches:
+            - master
+    pull_request: #Ejecute el flujo de trabajo cuando se hace un merge a master
+        branches:
+            - master
+
+jobs:
+    run-test:
+        runs-on: ubuntu-latest #runner de las pruebas                
+
+        steps:
+            - name: Checkout todolist APP
+              uses: actions/checkout@v3 #descarga el repo del producto
+
+            - name: Setup python
+              uses: actions/setup-python@v4
+              with:
+                python-version: '3.11'
+
+            - name: Install Deps
+              run: |
+                python -m venv venv
+                source venv/bin/activate
+                pip install -r requirements.txt
+
+            - name: Checkout test repo
+              run: git clone 'https://github.com/jhonarias91/aut_test_todo_playwright_java'
+
+            - name: Setup Java
+              uses: actions/setup-java@v3
+              with:
+                distribution: 'temurin'
+                java-version: '17'
+
+            - name: Build & Install
+              run: mvn -B install -D skipTests --no-transfer-progress
+            
+            - name: Ensure browsers are installed
+              run: mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"
+            
+            - name: Run tests
+              run: mvn test
+                
+
+            

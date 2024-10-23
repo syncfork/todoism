@@ -51,6 +51,7 @@ py -3.11 -m pip install -r requirements.txt
 py -3.11 -m flask initdb
 py -3.11 -m flask translate compile
 
+git clone https://github.com/syncfork/todoism
 Start 
 py -3.11 -m flask run --port=5000
 
@@ -64,3 +65,13 @@ taskkill /PID 1234 /F
 Start 
 py -3.11 -m flask run --port=5001
 py -3.11 -m flask run
+
+# Test
+
+repo for testing: 
+```bash
+https://github.com/jhonarias91/aut_test_todo_playwright_java
+```
+
+
+
