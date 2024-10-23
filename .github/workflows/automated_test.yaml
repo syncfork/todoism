@@ -8,7 +8,7 @@ on:
         branches:
             - master
 
-            
+
 jobs:
     run-test:
         runs-on: ubuntu-latest #runner de las pruebas                
@@ -27,6 +27,13 @@ jobs:
                 python -m venv venv
                 source venv/bin/activate
                 pip install -r requirements.txt
+
+            - name: Run Flask app
+              run: |
+                 source venv/bin/activate
+                 flask initdb
+                 flask translate compile
+                 nohup flask run > flask.log 2>&1 &
 
             - name: Checkout test repo
               run: git clone 'https://github.com/jhonarias91/aut_test_todo_playwright_java'
