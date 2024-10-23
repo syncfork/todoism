@@ -37,7 +37,7 @@ jobs:
                 java-version: '17'
 
             - name: Navigate to test directory
-              run: cd todoism_playwright # Change to the root dir
+              run: cd aut_test_todo_playwright_java # Change to the root dir
 
             - name: Build & Install
               run: mvn -B install -D skipTests --no-transfer-progress
