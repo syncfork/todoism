@@ -6,9 +6,8 @@ on:
             - master
     pull_request: #Ejecute el flujo de trabajo cuando se hace un merge a master
         branches:
-            - master
-             
-            
+            - master            
+
 jobs:
     run-test:
         runs-on: ubuntu-latest #runner de las pruebas                
