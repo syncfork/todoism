@@ -36,17 +36,17 @@ jobs:
                 distribution: 'temurin'
                 java-version: '17'
 
-            - name: Navigate to test directory
-              run: cd aut_test_todo_playwright_java # Change to the root dir
-
             - name: Build & Install
               run: mvn -B install -D skipTests --no-transfer-progress
+              working-directory: aut_test_todo_playwright_java # Define the working directory
             
             - name: Ensure browsers are installed
               run: mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"
+              working-directory: aut_test_todo_playwright_java # Define the working directory
             
             - name: Run tests
               run: mvn test
+              working-directory: aut_test_todo_playwright_java # Define the working directory
                 
 
             
