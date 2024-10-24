@@ -73,5 +73,6 @@ repo for testing:
 https://github.com/jhonarias91/aut_test_todo_playwright_java
 ```
 
-
+- Evidences:
+ The evidences for the sucessfull execution are on the /evidences folder. 
 
